@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Список задач</title>
+    <link rel="stylesheet" href="styles/tasks-style.css" />
+    <link rel="stylesheet" href="styles/add.css" />
+    <link rel="shortcut icon" href="images/favicon-32x32.ico" type="image/x-icon" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <button class="header-burger-btn" id="burger" aria-label="Меню">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="logo">
+                <img src="images/logo.png" width="80" height="87" alt="Logo" class="logo" />
+            </div>
+            <nav class="navigation">
+                <ul class="navigation-list">
+                    <li class="navigation-item">
+                        <a href="main.html">Главная</a>
+                    </li>
+                    <li class="navigation-item">
+                        <a href="projects.html" class="button">Проекты</a>
+                    </li>
+                    <li class="navigation-item">
+                        <a class="navigation-selected button">Список задач</a>
+                    </li>
+                    <li class="navigation-item">
+                        <a href="about.html">О приложении</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="main-content">
+        <div class="container">
+            <div class="table-info">
+                <h1 class="main-title">Задачи</h1>
+                <input type="text" id="filter-input" placeholder="Фильтровать по тегам" />
+                <button id="open-dialog-btn" class="button" type="button">Добавить задачу</button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="main-table">
+                <!-- Колонка задач -->
+                <div id="todo-column" class="task-column">
+                    <h2>Задачи</h2>
+                </div>
+
+                <!-- Колонка в процессе -->
+                <div id="in-progress-column" class="task-column">
+                    <h2>В процессе</h2>
+                </div>
+
+                <!-- Колонка выполненных задач -->
+                <div id="done-column" class="task-column">
+                    <h2>Выполнено</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно для добавления задачи -->
+    <dialog id="task-dialog" aria-labelledby="dialog-title">
+        <form method="dialog">
+            <h2 id="dialog-title">Добавить задачу</h2>
+            <input type="text" id="task-input" placeholder="Введите текст задачи" required />
+            <input type="text" id="tag-input" placeholder="Введите теги (через запятую)" />
+            <menu>
+                <button id="submit-task-btn" class="button" type="button">Сохранить</button>
+                <button id="close-dialog-btn" class="button" type="button">Отмена</button>
+            </menu>
+        </form>
+    </dialog>
+
+    <script defer src="scripts/burger.js"></script>
+    <script defer src="scripts/modal.js"></script>
+    <script defer src="scripts/drag-and-drop.js"></script>
+</body>
+
+</html>

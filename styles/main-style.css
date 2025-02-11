@@ -1,0 +1,266 @@
+/* Общие настройки */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Убираем проблемы с размерами элементов */
+}
+
+body {
+    background-color: #ffffff;
+    font-family: "TT Norms", sans-serif;
+}
+
+
+/* Основной контейнер */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    /* Отступы для адаптации */
+}
+
+
+/* Header (шапка сайта) */
+
+.header {
+    position: fixed;
+    width: 100%;
+    /* Хедер занимает всю ширину */
+    top: 0;
+    /* Фиксируем хедер в верхней части */
+    left: 0;
+    background-color: #92E3A9;
+    padding: 20px 0;
+    z-index: 1000;
+    /* Чтобы хедер всегда был на виду */
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    max-width: 150px;
+    /* Ограничиваем размер логотипа */
+}
+
+.header-burger-btn {
+    display: none;
+    /* Скрываем по умолчанию */
+    position: absolute;
+    /* Используем абсолютное позиционирование */
+    top: 15px;
+    /* Устанавливаем расстояние от верхней части контейнера */
+    right: 15px;
+    /* Позиция справа (при необходимости) */
+    width: 40px;
+    height: 40px;
+    border: none;
+    z-index: 2;
+    background-color: transparent;
+}
+
+.header-burger-btn span {
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background-color: black;
+    left: 5px;
+    transition: transform .5s, opacity .5s;
+}
+
+.header-burger-btn span:nth-child(1) {
+    transform: translateY(-10px);
+}
+
+.header-burger-btn span:nth-child(3) {
+    transform: translateY(10px);
+}
+
+.header.open .header-burger-btn span:nth-child(1) {
+    transform: translateY(0) rotate(45deg);
+}
+
+.header.open .header-burger-btn span:nth-child(2) {
+    opacity: 0;
+}
+
+.header.open .header-burger-btn span:nth-child(3) {
+    transform: translateY(0) rotate(-45deg);
+}
+
+.navigation {
+    margin-left: 0;
+    /* Убираем фиксированные отступы */
+}
+
+.navigation-list {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+    /* Пространство между элементами */
+}
+
+.navigation-item a {
+    font-size: 16px;
+    line-height: 130%;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: #92E3A9;
+    color: white;
+}
+
+.navigation-item .navigation-selected {
+    background-color: #f4edd1;
+    color: black;
+    cursor: default;
+}
+
+.navigation-item .navigation-selected:hover {
+    background-color: #d6c994;
+    color: black;
+}
+
+.navigation-item a:hover {
+    background-color: #2e8a48;
+}
+
+.button {
+    background-color: #92E3A9;
+    border-radius: 60px;
+    padding: 12px;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+
+/* Основное содержимое */
+
+.main-content {
+    padding-top: 161px;
+    /* Отступ, чтобы не перекрыть хедером */
+    padding-bottom: 200px;
+}
+
+.main-title {
+    font-family: "Steppe-ExtraBold", sans-serif;
+    font-size: 90px;
+    line-height: 100%;
+    margin-bottom: 20px;
+    color: #92E3A9;
+}
+
+.main-text {
+    max-width: 697px;
+    font-size: 18px;
+    line-height: 130%;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+    .header-burger-btn {
+        display: block;
+        /* Показываем бургер на экранах меньше 768px */
+    }
+    .navigation {
+        position: absolute;
+        left: -100%;
+        top: 0;
+        background-color: #92E3A9;
+        width: 100%;
+        height: 100vh;
+        transition: transform .5s;
+    }
+    @media (max-width: 768px) {
+        .navigation-item a {
+            background-color: #2e8a48;
+            /* Цвет кнопок */
+            color: #ffffff;
+            /* Цвет текста */
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            display: block;
+        }
+        .navigation-item a:hover {
+            background-color: #2e8a48;
+            /* Цвет кнопок при наведении */
+            color: #ffffff;
+            /* Цвет текста при наведении */
+        }
+    }
+    .navigation-list {
+        flex-direction: column;
+        gap: 20px;
+        /* Расстояние между элементами уменьшаем */
+        padding: 60px 20px 20px 20px;
+        /* Отступы для удобства */
+    }
+    .navigation-item {
+        color: #ffffff;
+        font-size: 21px;
+        display: block;
+        padding: 10px 0;
+    }
+    .main-title {
+        font-size: 60px;
+        /* Уменьшаем размер заголовка на планшетах */
+    }
+    .main-text {
+        font-size: 16px;
+        /* Меньший текст на планшетах */
+    }
+    .main-image {
+        max-width: 80%;
+        /* Уменьшаем изображение */
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-top: 20px;
+    }
+    .header.open .navigation {
+        transform: translateX(100%);
+    }
+    .main-table {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .task-column {
+        width: 100%;
+    }
+    .task-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 40px;
+        /* Еще меньше заголовок */
+    }
+    .main-text {
+        font-size: 14px;
+        /* Меньший текст */
+    }
+    .main-image {
+        display: none;
+        /* Прячем изображение на мобильных */
+    }
+    .button {
+        width: 100%;
+        /* Кнопки растягиваются на всю ширину */
+    }
+}
